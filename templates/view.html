@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Students</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=3">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>VIEW STUDENTS </h2>
+
+    <form action="/filter" method="post">
+
+        <div class="row">
+
+            <div class="form-group">
+                <label>From Date</label>
+                <input type="date" name="fromdate">
+            </div>
+
+            <div class="form-group">
+                <label>To Date</label>
+                <input type="date" name="todate">
+            </div>
+
+            <div class="form-group">
+                <label>Course</label>
+
+                <select name="course">
+                    <option value="">All Courses</option>
+
+                    {% for c in courses %}
+                    <option value="{{ c.Course }}">
+                        {{ c.Course }}
+                    </option>
+                    {% endfor %}
+
+                </select>
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-view">
+            Search
+        </button>
+
+    </form>
+
+    <br>
+
+    <table class="table">
+
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Course</th>
+            <th>Mobile</th>
+            <th>Admission Date</th>
+        </tr>
+
+        {% for s in students %}
+        <tr>
+            <td>{{ s.StudentID }}</td>
+            <td>{{ s.Name }}</td>
+            <td>{{ s.Course }}</td>
+            <td>{{ s.Mobile }}</td>
+            <td>{{ s.AdmissionDate }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <br>
+
+    <a href="/">
+        <button type="button" class="btn btn-register">
+            Back
+        </button>
+    </a>
+
+</div>
+
+</body>
+</html>
