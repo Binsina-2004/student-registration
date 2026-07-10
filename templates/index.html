@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% if edit_mode %}Update Student{% else %}Student Registration Portal{% endif %}
+    </title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            /*background: radial-gradient(circle at 80% 20%, #6fbba1 0%, #4a8471 45%, #2d5649 100%);*/
+            /*background: linear-gradient(135deg, #a5b4fc 0%, #b3e5fc 50%, #c8e6c9 100%);*/
+            background: radial-gradient(circle at 80% 20%, #a4317f 0%, transparent 45%), radial-gradient(circle at 15% 75%, #3f51b5 0%, transparent 50%), radial-gradient(circle at 50% 50%, #6a1b9a 0%, #1a1b41 100%);
+            background-color: #1a1b41; /* Rich midnight-blue base layer */
+            background-attachment: fixed;
+            overflow: hidden;
+            position: relative;
+        }
+        .bg-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 650px; /* Adjust size based on design preference */
+    height: auto;
+    opacity: 0.08; /* Keep it very subtle so form text remains perfectly readable */
+    pointer-events: none; /* Disables mouse interaction so fields can be clicked */
+    z-index: 1; /* Sits behind the container card */
+}
+
+        body::before, body::after {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+        }
+        body::before {
+            width: 300px;
+            height: 300px;
+            background: #4db6ac;
+            top: -50px;
+            left: -50px;
+        }
+        body::after {
+            width: 400px;
+            height: 400px;
+            background: #81c784;
+            bottom: -100px;
+            right: -50px;
+        }
+
+
+        .container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 900px;
+
+    /* 1. Higher transparency lets the green background bleed through */
+    background: transparent;
+
+    /* 2. Increased blur frosted glass effect */
+    backdrop-filter: blur(35px) saturate(120%);
+    -webkit-backdrop-filter: blur(35px) saturate(120%);
+
+    /* 3. High-contrast inner border gives it a distinct pane-of-glass edge */
+    border: 1px solid rgba(255, 255, 255, 0.45);
+
+    border-radius: 20px;
+    padding: 20px 30px;
+
+    /* 4. Deep soft shadow to separate the glass panel from the wall */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12),
+                inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+        .header-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid rgba(38, 166, 154, 0.3);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .header-title {
+            font-size: 22px;
+            color: #f6f6fa;
+            font-weight: 500;
+        }
+
+        .header-title span {
+            font-weight: 300;
+            color: #f8f5f5;
+            margin-left: 5px;
+        }
+
+        .step-indicator {
+            font-size: 13px;
+            color: #090909;
+            font-weight: 500;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -10px;
+            margin-left: -10px;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            position: relative;
+            flex: 0 0 33.333%;
+            max-width: 33.333%;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #edf2f6;
+            margin-bottom: 4px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper svg {
+            position: absolute;
+            left: 12px;
+            width: 16px;
+            height: 16px;
+            fill: #78909c;
+            pointer-events: none;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            height: 32px;
+            padding: 8px 12px 8px 36px;
+            font-size: 13px;
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+            color: #090909;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            border-radius: 6px;
+            outline: none;
+            /*transition: all 0.25s ease;*/
+        }
+
+        textarea {
+            height: 32px;
+            resize: none;
+            padding-top: 7px;
+        }
+
+        .address-svg {
+            top: 11px !important;
+        }
+
+        input[type="date"] {
+            height: 32px;
+            padding-right: 6px;
+        }
+
+        input:focus, textarea:focus {
+            background: #ffffff;
+            border-color: #26a69a;
+            transform: translateY(-2px) scale(1.015);
+    box-shadow: 0 6px 15px rgba(38, 166, 154, 0.2) !important;
+            /*box-shadow: 0 0 0 3px rgba(38, 166, 154, 0.15);*/
+        }
+
+        .special-focus input {
+            background: linear-gradient(to right, rgba(224, 242, 241, 0.7), rgba(225, 245, 254, 0.7));
+            border-color: #80deea;
+        }
+
+        .gender-group {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            height: 38px;
+        }
+
+        .gender-label {
+            position: relative;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            padding: 8px 0;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #455a64;
+            /*transition: all 0.2s ease;*/
+            user-select: none;
+            text-align: center;
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .gender-radio {
+            display: none;
+        }
+        .gender-label:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.85);
+}
+
+        .gender-radio:checked + .gender-label {
+            background: #b2dfdb;
+            color: #004d40;
+            border-color: #4db6ac;
+            font-weight: 600;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 10px 28px;
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        /*.btn-register {*/
+        /*    background: #00695c;*/
+        /*    color: #ffffff;*/
+        /*    box-shadow: 0 4px 10px rgba(0, 105, 92, 0.25);*/
+        /*}*/
+        .btn-register {
+    /* 1. Base color with a semi-transparent white-to-black gradient overlay */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.15) 100%), #00695c;
+    color: #ffffff;
+
+    /* 2. White faux light-reflection borders */
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+
+    /* 3. Deep glow shadow */
+    box-shadow: 0 4px 15px rgba(0, 105, 92, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+        .btn-register:hover {
+            background: #004d40;
+            transform: translateY(-1px);
+        }
+
+        .btn-view {
+    /* 1. Base color with a light reflection gradient layer */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.05) 100%), #bbdefb;
+    color: #0d47a1;
+
+    /* 2. Bright reflection borders */
+    border-top: 1px solid rgba(255, 255, 255, 0.6);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+
+    box-shadow: 0 4px 15px rgba(13, 71, 161, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+        .btn-view:hover {
+            background: #90caf9;
+            transform: translateY(-1px);
+        }
+
+        .footer-link {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 12px;
+            color: #546e7a;
+        }
+
+        .footer-link a {
+            color: #00695c;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                overflow: auto;
+            }
+            .form-group {
+                flex: 0 0 100%;
+                max-width: 100%;
+                margin-bottom: 8px;
+            }
+            .row {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                margin-bottom: 12px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<svg class="bg-watermark" viewBox="0 0 24 24" fill="#ffffff">
+    <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+    <path d="M12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+</svg>
+<img src="{{ url_for('static', filename='global-crest.jpg') }}" class="bg-watermark" alt="Watermark">
+<div class="container">
+
+    <div class="header-area">
+        <h2 class="header-title">
+            Global Academy | <span>{% if edit_mode %}Update Student{% else %}Student Registration{% endif %}</span>
+        </h2>
+        <div class="step-indicator">Step 1 of 3: Personal Information</div>
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div id="flash-popup" class="flash-popup">
+            <div class="flash-content">
+                <span class="flash-icon">✨</span>
+                <span class="flash-text">{{ messages[0] }}</span>
+            </div>
+            <button class="flash-close" onclick="dismissFlash()">&times;</button>
+        </div>
+
+        <style>
+            .flash-popup {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 9999;
+                background: rgba(255, 255, 255, 0.85);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                border: 1px solid rgba(77, 182, 172, 0.4);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border-radius: 12px;
+                padding: 14px 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 20px;
+                min-width: 280px;
+                max-width: 400px;
+                transform: translateX(120%);
+                transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+            .flash-popup.show {
+                transform: translateX(0);
+            }
+            .flash-content {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            .flash-icon {
+                font-size: 16px;
+            }
+            .flash-text {
+                font-size: 13px;
+                color: #004d40;
+                font-weight: 500;
+            }
+            .flash-close {
+                background: none;
+                border: none;
+                font-size: 20px;
+                color: #78909c;
+                cursor: pointer;
+                transition: color 0.2s;
+                line-height: 1;
+            }
+            .flash-close:hover {
+                color: #26a69a;
+            }
+        </style>
+    {% endif %}
+    {% endwith %}
+
+    <form action="{% if edit_mode %}{{ url_for('update_student', student_id=student.StudentID) }}{% else %}{{ url_for('save') }}{% endif %}"
+          method="post" autocomplete="off">
+
+        <div class="row">
+            <div class="form-group special-focus">
+                <label>Full Name</label>
+                <div class="input-wrapper">
+                    <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <input type="text" name="name" value="{{ student.Name if student else '' }}" placeholder="Your Full Name" pattern="[A-Za-z. ]+" title="Only letters, spaces and dot are allowed" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Gender</label>
+                <div class="gender-group">
+                    <input type="radio" id="male" name="gender" value="Male" class="gender-radio" {% if student and student.Genderr=='Male' %}checked{% endif %} required>
+                    <label for="male" class="gender-label">Male</label>
+
+                    <input type="radio" id="female" name="gender" value="Female" class="gender-radio" {% if student and student.Genderr=='Female' %}checked{% endif %}>
+                    <label for="female" class="gender-label">Female</label>
+
+                    <input type="radio" id="other" name="gender" value="Other" class="gender-radio" {% if student and student.Genderr=='Other' %}checked{% endif %}>
+                    <label for="other" class="gender-label">Other</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Date of Birth</label>
+                <div class="input-wrapper">
+                 <input type="date" name="dob" id="dob" value="{{ student.DOB if student else '' }}" required style="padding-left: 16px;">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label>Age</label>
+                <div class="input-wrapper">
+                   <input type="number" name="age" id="age" value="{{ student.Age if student else '' }}" placeholder="Age" min="1" max="100" required readonly style="padding-left: 16px;">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Father Name</label>
+                <div class="input-wrapper">
+                    <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <input type="text" name="father" value="{{ student.FatherName if student else '' }}" placeholder="Father Name" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Mother Name</label>
+                <div class="input-wrapper">
+                    <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <input type="text" name="mother" value="{{ student.MotherName if student else '' }}" placeholder="Mother Name" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label>Mobile Number</label>
+                <div class="input-wrapper">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <input type="text" name="mobile" value="{{ student.Mobile if student else '' }}" placeholder="Mobile Number" maxlength="10" pattern="[0-9]{10}" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Email Address</label>
+                <div class="input-wrapper">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <input type="email" name="email" value="{{ student.Email if student else '' }}" placeholder="Email Address" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Course</label>
+                <div class="input-wrapper">
+                    <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5.47 12.5L3 11.16v2.6c0 1.14.7 2.18 1.78 2.6L12 20l3-.91v-2.31l-3 1.47-6.53-5.75z"/></svg>
+                    <input type="text" name="course" value="{{ student.Course if student else '' }}" placeholder="Course" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label>Address</label>
+                <div class="input-wrapper">
+                    <svg viewBox="0 0 24 24" class="address-svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <textarea name="address" placeholder="Address" required>{{ student.Address if student else '' }}</textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>City</label>
+                <div class="input-wrapper">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <input type="text" name="city" value="{{ student.City if student else '' }}" placeholder="City" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>State</label>
+                <div class="input-wrapper">
+                    <svg viewBox="0 0 24 24"><path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/></svg>
+                    <input type="text" name="state" value="{{ student.State if student else '' }}" placeholder="State" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label>Admission Date</label>
+                <div class="input-wrapper">
+                    <input type="date" name="admissiondate" value="{{ student.AdmissionDate if student else '' }}" required style="padding-left: 16px;">
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button type="submit" class="btn btn-register">
+                {% if edit_mode %}Update Student{% else %}Register Student ✨{% endif %}
+            </button>
+
+            <a href="/view" class="btn btn-view">
+                View Students
+            </a>
+        </div>
+
+    </form>
+
+    <div class="footer-link">
+        Need help? <a href="#">Contact Admissions</a>
+    </div>
+
+</div>
+<script>
+    function calculateAge() {
+        const dobValue = document.getElementById('dob').value;
+        if (!dobValue) return;
+
+        const dob = new Date(dobValue);
+        const today = new Date();
+
+        let age = today.getFullYear() - dob.getFullYear();
+        const monthDiff = today.getMonth() - dob.getMonth();
+        const dayDiff = today.getDate() - dob.getDate();
+
+        if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+            age--;
+        }
+
+        document.getElementById('age').value = age >= 0 ? age : '';
+    }
+
+    document.getElementById('dob').addEventListener('change', calculateAge);
+    document.addEventListener('DOMContentLoaded', calculateAge);
+    // Function to dismiss flash popup manually
+    function dismissFlash() {
+        const flash = document.getElementById('flash-popup');
+        if (flash) {
+            flash.classList.remove('show');
+            setTimeout(() => flash.remove(), 400); // Clean up DOM after slide-out
+        }
+    }
+
+    // Existing and new logic runner on DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', () => {
+        calculateAge();
+
+        // Flash popup entry and auto-dismissal
+        const flash = document.getElementById('flash-popup');
+        if (flash) {
+            // Trigger entry slide-in animation slightly after load
+            setTimeout(() => {
+                flash.classList.add('show');
+            }, 100);
+
+            // Automatically hide and remove the popup after 4 seconds
+            setTimeout(() => {
+                dismissFlash();
+            }, 4000);
+        }
+    });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,300 @@
+/* ============================================================
+   Global Academy — Student Registration
+   Self-contained stylesheet: no external fonts, no CDN icon
+   packs, no external images. System fonts + inline SVG icons
+   only, so the page renders identically online or offline.
+   ============================================================ */
+
+:root{
+  --teal-dark:#0e5952;
+  --teal:#127a70;
+  --teal-light:#5fb3ab;
+  --ink:#1f2d2b;
+  --muted:#6b7c79;
+  --border:#dbe7e4;
+  --bg-card:rgba(255,255,255,0.86);
+  --field-bg:#f7faf9;
+  --focus-bg:#eaf3f1;
+  --gold:#c9a35a;
+  --danger:#c0392b;
+}
+
+*{ box-sizing:border-box; }
+
+html,body{
+  height:100%;
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color:var(--ink);
+}
+
+body{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 20px;
+  overflow-x:hidden;
+  background:
+    linear-gradient(135deg,#eaf6f2 0%,#eef3fb 55%,#eefaf5 100%);
+}
+
+/* ---- Decorative background blobs (pure CSS, no images) ---- */
+.blob{
+  position:fixed;
+  border-radius:50%;
+  filter:blur(10px);
+  opacity:0.55;
+  z-index:0;
+  pointer-events:none;
+}
+.blob-1{
+  width:520px;height:420px;
+  top:-140px; left:-160px;
+  background:radial-gradient(circle at 30% 30%, #b7ecd8, #d7f3ea 70%, transparent 100%);
+}
+.blob-2{
+  width:480px;height:480px;
+  bottom:-200px; left:-120px;
+  background:radial-gradient(circle at 40% 40%, #8fe0c9, #cdeee1 70%, transparent 100%);
+  opacity:0.5;
+}
+.blob-3{
+  width:460px;height:460px;
+  top:-120px; right:-160px;
+  background:radial-gradient(circle at 60% 40%, #bfe3f5, #dff0fb 70%, transparent 100%);
+}
+.blob-4{
+  width:360px;height:360px;
+  bottom:-140px; right:-100px;
+  background:radial-gradient(circle at 50% 50%, #a7d8ee, #d9edf8 70%, transparent 100%);
+  opacity:0.6;
+}
+
+/* ---------------------- Card ---------------------- */
+.card{
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:900px;
+  background:var(--bg-card);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-radius:20px;
+  box-shadow:0 20px 60px rgba(15,60,55,0.14), 0 2px 8px rgba(15,60,55,0.06);
+  padding:36px 44px 30px;
+}
+
+.card-header{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:18px;
+  flex-wrap:wrap;
+}
+
+.brand{
+  font-size:22px;
+  font-weight:700;
+  letter-spacing:0.2px;
+  color:var(--ink);
+}
+.brand .sep{
+  color:var(--teal-light);
+  font-weight:400;
+  margin:0 6px;
+}
+.brand .sub{
+  font-weight:600;
+  color:var(--teal-dark);
+}
+
+.step-label{
+  font-size:13px;
+  color:var(--muted);
+  white-space:nowrap;
+}
+
+/* progress bar */
+.progress-track{
+  width:100%;
+  height:5px;
+  background:#dfe9e6;
+  border-radius:4px;
+  margin-bottom:20px;
+  overflow:hidden;
+}
+.progress-fill{
+  width:33.3%;
+  height:100%;
+  background:linear-gradient(90deg,var(--teal-dark),var(--teal-light));
+  border-radius:4px;
+}
+
+/* success flash message */
+.success-message{
+  background:#e4f6ef;
+  border:1px solid #a9dfc4;
+  color:#1c7a4b;
+  padding:10px 16px;
+  border-radius:8px;
+  font-size:14px;
+  margin-bottom:18px;
+  text-align:center;
+}
+
+/* ---------------------- Form grid ---------------------- */
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  column-gap:36px;
+  row-gap:18px;
+}
+.full-span{ grid-column:1 / -1; }
+
+.field label{
+  display:block;
+  font-size:13.5px;
+  font-weight:600;
+  color:var(--ink);
+  margin-bottom:7px;
+}
+
+.input-wrap{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  border-bottom:1.5px solid var(--border);
+  padding:8px 6px 9px 4px;
+  transition:border-color .15s ease, background-color .15s ease;
+  border-radius:6px 6px 0 0;
+}
+.input-wrap svg{
+  flex:0 0 auto;
+  color:var(--teal);
+  opacity:0.75;
+}
+.input-wrap input,
+.input-wrap select,
+.input-wrap textarea{
+  border:none;
+  outline:none;
+  background:transparent;
+  font-size:14.5px;
+  color:var(--ink);
+  width:100%;
+  font-family:inherit;
+  padding:2px 0;
+}
+.input-wrap input::placeholder,
+.input-wrap textarea::placeholder{
+  color:#93a5a1;
+}
+.input-wrap:focus-within{
+  background:var(--focus-bg);
+  border-color:var(--teal);
+}
+.input-wrap.filled{
+  background:var(--focus-bg);
+  border-color:var(--teal-light);
+}
+
+.input-wrap input:invalid{ box-shadow:none; }
+
+textarea{ resize:vertical; min-height:22px; max-height:160px; }
+
+/* ---------------------- Gender toggle (radio-based) ---------------------- */
+/* Real <input type="radio"> elements underneath — full native form
+   validation and Flask compatibility — visually styled as pill buttons. */
+.gender-group{
+  display:flex;
+  gap:10px;
+  padding-top:2px;
+}
+.gender-group input[type="radio"]{
+  position:absolute;
+  opacity:0;
+  width:1px;
+  height:1px;
+  pointer-events:none;
+}
+.gender-btn{
+  flex:1;
+  text-align:center;
+  padding:9px 10px;
+  border-radius:8px;
+  border:1.5px solid var(--border);
+  background:#fff;
+  font-size:14px;
+  color:var(--muted);
+  cursor:pointer;
+  transition:all .15s ease;
+  user-select:none;
+}
+.gender-btn:hover{ border-color:var(--teal-light); }
+.gender-group input[type="radio"]:checked + .gender-btn{
+  background:var(--teal);
+  border-color:var(--teal);
+  color:#fff;
+  font-weight:600;
+}
+.gender-group input[type="radio"]:focus-visible + .gender-btn{
+  outline:2px solid var(--teal-dark);
+  outline-offset:2px;
+}
+
+/* ---------------------- Footer actions ---------------------- */
+.actions{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  margin-top:30px;
+}
+
+.btn{
+  padding:11px 26px;
+  border-radius:24px;
+  border:none;
+  font-size:14.5px;
+  font-weight:600;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:inherit;
+  transition:transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+.btn:active{ transform:translateY(1px); }
+
+.btn-primary{
+  background:linear-gradient(135deg,var(--teal-dark),var(--teal));
+  color:#fff;
+  box-shadow:0 8px 18px rgba(14,89,82,0.28);
+}
+.btn-primary:hover{ filter:brightness(1.06); }
+
+.btn-secondary{
+  background:#cfe8f2;
+  color:#1c5570;
+}
+.btn-secondary:hover{ background:#c0e0ee; }
+
+.help-text{
+  text-align:center;
+  margin-top:20px;
+  font-size:13px;
+  color:var(--muted);
+}
+.help-text a{
+  color:var(--teal-dark);
+  text-decoration:none;
+  font-weight:600;
+}
+.help-text a:hover{ text-decoration:underline; }
+
+@media (max-width: 640px){
+  .form-grid{ grid-template-columns:1fr; }
+  .card{ padding:26px 22px 22px; }
+}
