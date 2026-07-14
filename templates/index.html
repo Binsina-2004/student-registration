@@ -20,25 +20,22 @@
             justify-content: center;
             align-items: center;
             padding: 15px;
-            /*background: radial-gradient(circle at 80% 20%, #6fbba1 0%, #4a8471 45%, #2d5649 100%);*/
-            /*background: linear-gradient(135deg, #a5b4fc 0%, #b3e5fc 50%, #c8e6c9 100%);*/
-            background: radial-gradient(circle at 80% 20%, #a4317f 0%, transparent 45%), radial-gradient(circle at 15% 75%, #3f51b5 0%, transparent 50%), radial-gradient(circle at 50% 50%, #6a1b9a 0%, #1a1b41 100%);
-            background-color: #1a1b41; /* Rich midnight-blue base layer */
-            background-attachment: fixed;
+            background: radial-gradient(circle at 80% 20%, #6fbba1 0%, #4a8471 45%, #2d5649 100%);
             overflow: hidden;
             position: relative;
         }
+
         .bg-watermark {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 650px; /* Adjust size based on design preference */
-    height: auto;
-    opacity: 0.08; /* Keep it very subtle so form text remains perfectly readable */
-    pointer-events: none; /* Disables mouse interaction so fields can be clicked */
-    z-index: 1; /* Sits behind the container card */
-}
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 650px;
+            height: auto;
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 1;
+        }
 
         body::before, body::after {
             content: "";
@@ -63,30 +60,20 @@
             right: -50px;
         }
 
-
         .container {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    max-width: 900px;
-
-    /* 1. Higher transparency lets the green background bleed through */
-    background: transparent;
-
-    /* 2. Increased blur frosted glass effect */
-    backdrop-filter: blur(35px) saturate(120%);
-    -webkit-backdrop-filter: blur(35px) saturate(120%);
-
-    /* 3. High-contrast inner border gives it a distinct pane-of-glass edge */
-    border: 1px solid rgba(255, 255, 255, 0.45);
-
-    border-radius: 20px;
-    padding: 20px 30px;
-
-    /* 4. Deep soft shadow to separate the glass panel from the wall */
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12),
-                inset 0 1px 1px rgba(255, 255, 255, 0.3);
-}
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 900px;
+            background: #cae0cc;
+            backdrop-filter: blur(35px) saturate(120%);
+            -webkit-backdrop-filter: blur(35px) saturate(120%);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 20px;
+            padding: 20px 30px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12),
+                        inset 0 1px 1px rgba(255, 255, 255, 0.3);
+        }
 
         .header-area {
             display: flex;
@@ -99,13 +86,13 @@
 
         .header-title {
             font-size: 22px;
-            color: #f6f6fa;
+            color: #141415;
             font-weight: 500;
         }
 
         .header-title span {
             font-weight: 300;
-            color: #f8f5f5;
+            color: #131313;
             margin-left: 5px;
         }
 
@@ -135,7 +122,7 @@
             display: block;
             font-size: 14px;
             font-weight: 600;
-            color: #edf2f6;
+            color: #2c3e50;
             margin-bottom: 4px;
         }
 
@@ -169,7 +156,6 @@
             border: 1px solid rgba(0, 0, 0, 0.12);
             border-radius: 6px;
             outline: none;
-            /*transition: all 0.25s ease;*/
         }
 
         textarea {
@@ -191,8 +177,7 @@
             background: #ffffff;
             border-color: #26a69a;
             transform: translateY(-2px) scale(1.015);
-    box-shadow: 0 6px 15px rgba(38, 166, 154, 0.2) !important;
-            /*box-shadow: 0 0 0 3px rgba(38, 166, 154, 0.15);*/
+            box-shadow: 0 6px 15px rgba(38, 166, 154, 0.2) !important;
         }
 
         .special-focus input {
@@ -221,7 +206,6 @@
             font-size: 13px;
             font-weight: 500;
             color: #455a64;
-            /*transition: all 0.2s ease;*/
             user-select: none;
             text-align: center;
             transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
@@ -230,11 +214,12 @@
         .gender-radio {
             display: none;
         }
+
         .gender-label:hover {
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-    background: rgba(255, 255, 255, 0.85);
-}
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+            background: rgba(255, 255, 255, 0.85);
+        }
 
         .gender-radio:checked + .gender-label {
             background: #b2dfdb;
@@ -265,27 +250,17 @@
             text-decoration: none;
         }
 
-        /*.btn-register {*/
-        /*    background: #00695c;*/
-        /*    color: #ffffff;*/
-        /*    box-shadow: 0 4px 10px rgba(0, 105, 92, 0.25);*/
-        /*}*/
         .btn-register {
-    /* 1. Base color with a semi-transparent white-to-black gradient overlay */
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.15) 100%), #00695c;
-    color: #ffffff;
-
-    /* 2. White faux light-reflection borders */
-    border-top: 1px solid rgba(255, 255, 255, 0.4);
-    border-left: 1px solid rgba(255, 255, 255, 0.2);
-    border-right: 1px solid rgba(0, 0, 0, 0.2);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-
-    /* 3. Deep glow shadow */
-    box-shadow: 0 4px 15px rgba(0, 105, 92, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    position: relative;
-    overflow: hidden;
-}
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.15) 100%), #00695c;
+            color: #ffffff;
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            border-right: 1px solid rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 105, 92, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
 
         .btn-register:hover {
             background: #004d40;
@@ -293,20 +268,16 @@
         }
 
         .btn-view {
-    /* 1. Base color with a light reflection gradient layer */
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.05) 100%), #bbdefb;
-    color: #0d47a1;
-
-    /* 2. Bright reflection borders */
-    border-top: 1px solid rgba(255, 255, 255, 0.6);
-    border-left: 1px solid rgba(255, 255, 255, 0.3);
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-
-    box-shadow: 0 4px 15px rgba(13, 71, 161, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    position: relative;
-    overflow: hidden;
-}
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.05) 100%), #bbdefb;
+            color: #0d47a1;
+            border-top: 1px solid rgba(255, 255, 255, 0.6);
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
+            border-right: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 15px rgba(13, 71, 161, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
 
         .btn-view:hover {
             background: #90caf9;
@@ -326,6 +297,62 @@
             font-weight: 600;
         }
 
+        .flash-popup {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(77, 182, 172, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            min-width: 280px;
+            max-width: 400px;
+            transform: translateX(120%);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .flash-popup.show {
+            transform: translateX(0);
+        }
+
+        .flash-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .flash-icon {
+            font-size: 16px;
+        }
+
+        .flash-text {
+            font-size: 13px;
+            color: #004d40;
+            font-weight: 500;
+        }
+
+        .flash-close {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #78909c;
+            cursor: pointer;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+
+        .flash-close:hover {
+            color: #26a69a;
+        }
+
         @media (max-width: 768px) {
             body {
                 overflow: auto;
@@ -342,17 +369,13 @@
                 margin-bottom: 12px;
             }
         }
-
     </style>
 </head>
 <body>
-<svg class="bg-watermark" viewBox="0 0 24 24" fill="#ffffff">
-    <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
-    <path d="M12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
-</svg>
-<img src="{{ url_for('static', filename='global-crest.jpg') }}" class="bg-watermark" alt="Watermark">
-<div class="container">
 
+<img src="{{ url_for('static', filename='global-crest.jpg') }}" class="bg-watermark" alt="Watermark">
+
+<div class="container">
     <div class="header-area">
         <h2 class="header-title">
             Global Academy | <span>{% if edit_mode %}Update Student{% else %}Student Registration{% endif %}</span>
@@ -369,64 +392,10 @@
             </div>
             <button class="flash-close" onclick="dismissFlash()">&times;</button>
         </div>
-
-        <style>
-            .flash-popup {
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                z-index: 9999;
-                background: rgba(255, 255, 255, 0.85);
-                backdrop-filter: blur(15px);
-                -webkit-backdrop-filter: blur(15px);
-                border: 1px solid rgba(77, 182, 172, 0.4);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                border-radius: 12px;
-                padding: 14px 20px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                gap: 20px;
-                min-width: 280px;
-                max-width: 400px;
-                transform: translateX(120%);
-                transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            }
-            .flash-popup.show {
-                transform: translateX(0);
-            }
-            .flash-content {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-            }
-            .flash-icon {
-                font-size: 16px;
-            }
-            .flash-text {
-                font-size: 13px;
-                color: #004d40;
-                font-weight: 500;
-            }
-            .flash-close {
-                background: none;
-                border: none;
-                font-size: 20px;
-                color: #78909c;
-                cursor: pointer;
-                transition: color 0.2s;
-                line-height: 1;
-            }
-            .flash-close:hover {
-                color: #26a69a;
-            }
-        </style>
     {% endif %}
     {% endwith %}
 
-    <form action="{% if edit_mode %}{{ url_for('update_student', student_id=student.StudentID) }}{% else %}{{ url_for('save') }}{% endif %}"
-          method="post" autocomplete="off">
-
+    <form action="{% if edit_mode %}{{ url_for('update_student', student_id=student.StudentID) }}{% else %}{{ url_for('save') }}{% endif %}" method="post" autocomplete="off">
         <div class="row">
             <div class="form-group special-focus">
                 <label>Full Name</label>
@@ -442,10 +411,10 @@
                     <input type="radio" id="male" name="gender" value="Male" class="gender-radio" {% if student and student.Genderr=='Male' %}checked{% endif %} required>
                     <label for="male" class="gender-label">Male</label>
 
-                    <input type="radio" id="female" name="gender" value="Female" class="gender-radio" {% if student and student.Genderr=='Female' %}checked{% endif %}>
+                    <input type="radio" id="female" name="gender" value="Female" class="gender-radio" {% if student and student.Genderr=='Female' %}checked{% endif %} required>
                     <label for="female" class="gender-label">Female</label>
 
-                    <input type="radio" id="other" name="gender" value="Other" class="gender-radio" {% if student and student.Genderr=='Other' %}checked{% endif %}>
+                    <input type="radio" id="other" name="gender" value="Other" class="gender-radio" {% if student and student.Genderr=='Other' %}checked{% endif %} required>
                     <label for="other" class="gender-label">Other</label>
                 </div>
             </div>
@@ -453,7 +422,7 @@
             <div class="form-group">
                 <label>Date of Birth</label>
                 <div class="input-wrapper">
-                 <input type="date" name="dob" id="dob" value="{{ student.DOB if student else '' }}" required style="padding-left: 16px;">
+                    <input type="date" name="dob" id="dob" value="{{ student.DOB if student else '' }}" required style="padding-left: 16px;">
                 </div>
             </div>
         </div>
@@ -462,7 +431,7 @@
             <div class="form-group">
                 <label>Age</label>
                 <div class="input-wrapper">
-                   <input type="number" name="age" id="age" value="{{ student.Age if student else '' }}" placeholder="Age" min="1" max="100" required readonly style="padding-left: 16px;">
+                    <input type="number" name="age" id="age" value="{{ student.Age if student else '' }}" placeholder="Age" min="1" max="100" required readonly style="padding-left: 16px;">
                 </div>
             </div>
 
@@ -546,21 +515,17 @@
 
         <div class="action-buttons">
             <button type="submit" class="btn btn-register">
-                {% if edit_mode %}Update Student{% else %}Register Student ✨{% endif %}
+                {% if edit_mode %}Update Student{% else %}Register Student{% endif %}
             </button>
-
-            <a href="/view" class="btn btn-view">
-                View Students
-            </a>
+            <a href="/view" class="btn btn-view">View Students</a>
         </div>
-
     </form>
 
     <div class="footer-link">
         Need help? <a href="#">Contact Admissions</a>
     </div>
-
 </div>
+
 <script>
     function calculateAge() {
         const dobValue = document.getElementById('dob').value;
@@ -580,30 +545,25 @@
         document.getElementById('age').value = age >= 0 ? age : '';
     }
 
-    document.getElementById('dob').addEventListener('change', calculateAge);
-    document.addEventListener('DOMContentLoaded', calculateAge);
-    // Function to dismiss flash popup manually
     function dismissFlash() {
         const flash = document.getElementById('flash-popup');
         if (flash) {
             flash.classList.remove('show');
-            setTimeout(() => flash.remove(), 400); // Clean up DOM after slide-out
+            setTimeout(() => flash.remove(), 400);
         }
     }
 
-    // Existing and new logic runner on DOMContentLoaded
+    document.getElementById('dob').addEventListener('change', calculateAge);
+
     document.addEventListener('DOMContentLoaded', () => {
         calculateAge();
 
-        // Flash popup entry and auto-dismissal
         const flash = document.getElementById('flash-popup');
         if (flash) {
-            // Trigger entry slide-in animation slightly after load
             setTimeout(() => {
                 flash.classList.add('show');
             }, 100);
 
-            // Automatically hide and remove the popup after 4 seconds
             setTimeout(() => {
                 dismissFlash();
             }, 4000);
@@ -612,6 +572,8 @@
 </script>
 </body>
 </html>
+
+
 
 
 

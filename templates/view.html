@@ -11,83 +11,61 @@
             margin: 0;
             padding: 0;
         }
-        /*body {*/
-        /*    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;*/
-        /*    background-color: #e4ece3;*/
-        /*    color: #1f2937;*/
-        /*    padding: 0;*/
-        /*    min-height: 100vh;*/
-        /*}*/
-
-
 
         body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    /* Vibrant green/teal gradient background */
-   background: radial-gradient(circle at 85% 15%, #d500f9 0%, transparent 55%),
-                radial-gradient(circle at 15% 85%, #2979ff 0%, transparent 55%),
-                radial-gradient(circle at 50% 50%, #311b92 0%, #0a051b 100%);
-
-    background-color: #0a051b; /* Sleek midnight base */
-    background-attachment: fixed;
-    color: #1f2937;
-    padding: 0;
-    min-height: 100vh;
-}
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: radial-gradient(circle at 80% 20%, #ccd3cf 0%, #4a8471 45%, #2d5649 100%);
+            color: #1f2937;
+            padding: 0;
+            min-height: 100vh;
+        }
 
         /* Top Navigation Header Bar */
         .top-navbar {
-            background:transparent ;
+            background: white;
             border-bottom: 1px solid #e5e7eb;
-            padding: 1rem 2rem;
+            padding: 0.3rem 1rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 2rem;
+            margin-bottom:1%;
         }
+
         .brand {
             display: flex;
             align-items: center;
             gap: 0.5rem;
             font-size: 1.25rem;
             font-weight: 700;
-            color: #e9edf6;
+            color: #111827;
         }
+
         .brand-icon {
-            color: #e9ebee;
+            color: #1f2937;
         }
 
-
-
-        /* Main Container Card */
         /* Glass morphism Container Card */
-       .container {
-    max-width: 1300px;
-    margin: 2rem auto 3rem auto;
-
-    /* Semi-transparent white background */
-    background: rgba(255, 255, 255, 0.25);
-
-    /* The blur effect that makes it look like frosted glass */
-    backdrop-filter: blur(25px) saturate(140%);
-    -webkit-backdrop-filter: blur(25px) saturate(140%);
-
-    /* Soft border and rounded corners matching the registration portal */
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 1.25rem; /* 20px rounded corners */
-
-    padding: 2rem;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-}
-
+        .container {
+            max-width: 95%;
+            margin: 0 1cm 0rem 1cm;
+            background: #a8beac;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 1.25rem;
+            padding: 1rem 2rem 2rem 2rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+        }
 
         .page-title {
             font-size: 1.5rem;
             font-weight: 700;
             color: #111827;
-            margin-bottom: 1.5rem;
+            margin-bottom:0rem;
+            margin-top: -10px;
             position: relative;
         }
+
         .page-title::after {
             content: '';
             display: block;
@@ -98,29 +76,14 @@
             border-radius: 2px;
         }
 
-        /* Filters Layout (Matching Row Alignment) */
-        /*.filter-form {*/
-        /*    display: flex;*/
-        /*    flex-wrap: wrap;*/
-        /*    gap: 0.5rem;*/
-        /*    align-items: flex-end;*/
-        /*    margin-bottom: 2rem;*/
-        /*}*/
-
+        /* Filters Layout */
         .filter-form {
-    display: flex;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 25px;
-}
-        /*.form-group {*/
-        /*    flex: 1;*/
-        /*    min-width: 100px;*/
-        /*    display: flex;*/
-        /*    flex-direction: column;*/
-        /*    gap: 0.1rem;*/
-        /*}*/
+            display: flex;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
 
         .form-group {
             width: 230px;
@@ -132,8 +95,9 @@
         .form-group label {
             font-size: 0.85rem;
             font-weight: 600;
-            color: #eff3f8;
+            color: #4b5563;
         }
+
         .form-group input {
             width: 70%;
             background: #ffffff;
@@ -145,11 +109,12 @@
             outline: none;
             height: 42px;
         }
+
         .form-group input:focus {
             border-color: #2563eb;
         }
 
-        /* Modernized Trigger Style to replace standard select */
+        /* Modernized Trigger Style */
         .course-select-trigger {
             display: flex;
             align-items: center;
@@ -172,7 +137,7 @@
             display: flex;
             gap: 0.5rem;
             height: 42px;
-            position: relative; /* Added relative positioning for dropdown layout placement */
+            position: relative;
         }
 
         /* Button Variations */
@@ -186,11 +151,12 @@
             border-radius: 0.5rem;
             border: 1px solid transparent;
             cursor: pointer;
-            height: 40px;
+            height: 42px;
             transition: all 0.15s ease;
             text-decoration: none;
             white-space: nowrap;
         }
+
         .btn-search {
             background-color: #2563eb;
             color: #ffffff;
@@ -204,7 +170,14 @@
         }
         .btn-clear:hover { background-color: #e5e7eb; border-color: #cbd5e1; }
 
-        /* --- NEW FLOATING DROPDOWN FOR COLUMNS VISIBILITY --- */
+         .btn-clears {
+            background-color: #0f59ec;
+            border-color: #d1d5db;
+            color: #eef4fc;
+        }
+        /*.btn-clears:hover { background-color: #e5e7eb; border-color: #cbd5e1; }*/
+
+        /* Floating Dropdown for Columns Visibility */
         .col-dropdown-menu {
             display: none;
             position: absolute;
@@ -220,9 +193,11 @@
             z-index: 50;
             padding: 0.5rem;
         }
+
         .col-dropdown-menu.show {
             display: block;
         }
+
         .col-dropdown-item {
             display: flex;
             align-items: center;
@@ -233,58 +208,66 @@
             cursor: pointer;
             border-radius: 0.375rem;
         }
+
         .col-dropdown-item:hover {
             background-color: #f3f4f6;
         }
+
         .col-dropdown-item input {
             cursor: pointer;
         }
 
-        /* Table Container and Custom Dark Headings */
+        /* Table Architecture */
         .table-container {
             width: 100%;
             overflow-x: auto;
             border: 1px solid #141415;
             border-radius: 0.5rem;
-            background: transparent ;
+            background: whitesmoke;
             margin-bottom: 1.5rem;
         }
+
         .table {
-            width: 100%;
+            width: max-content;
+            min-width: 100%;
             border-collapse: collapse;
             text-align: left;
-            font-size: 0.875rem;
-        }
+            font-size: 12px;
+}
         .table th {
-            background-color: #262e3b;
+            background-color: #476e4c;
             color: #ffffff;
-            padding: 1rem;
+            line-height: 1.1;
+            padding: 2px 8px !important;
             font-weight: 600;
             font-size: 0.8rem;
             letter-spacing: 0.02em;
             border-right: 1px solid #374151;
+            width: auto;
+            white-space: nowrap;
+}
         }
+
         .table th:last-child { border-right: none; }
 
         .table tbody tr {
             transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, background-color 0.2s ease;
             position: relative;
         }
-        .table tbody tr:hover {
-            transform: scale(1.012);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-            z-index: 5;
-        }
 
 
         .table td {
-            padding: 1rem;
+            padding: 2px 8px !important;
             border-bottom: 1px solid #141415;
+            line-height: 1.1;
             border-right: 1px solid #141415;
             color: #141415;
+            width: auto;
             white-space: nowrap;
-        }
+}
+
         .table td:last-child { border-right: none; }
+
         .table tr:hover td {
             background-color: #f8fafc;
         }
@@ -299,6 +282,7 @@
             font-weight: 600;
             border: 1px solid #dbeafe;
         }
+
         input[type="checkbox"] {
             cursor: pointer;
             width: 1.1rem;
@@ -306,18 +290,20 @@
             accent-color: #2563eb;
         }
 
-        /* Action Buttons Inside Rows */
+        /* Row Action Utilities */
         .action-cell {
             display: flex;
             gap: 0.300rem;
             justify-content: center;
         }
+
         .btn-action {
             height: 30px;
             padding: 0 0.75rem;
             font-size: 0.75rem;
             border-radius: 0.375rem;
         }
+
         .btn-edit {
             background-color: #f60f29;
             color: #ece8e6;
@@ -332,13 +318,14 @@
         }
         .btn-print-row:hover { background-color: #acd2d2; }
 
-        /* Modernized Lower Pagination Layout */
+        /* Pagination & Layout Footers */
         .footer-controls {
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 0.5rem;
         }
+
         .info-row {
             display: flex;
             justify-content: space-between;
@@ -346,6 +333,7 @@
             font-size: 0.85rem;
             color: #090909;
         }
+
         .bottom-actions-bar {
             display: flex;
             justify-content: space-between;
@@ -353,8 +341,9 @@
             border-top: 1px solid #e5e7eb;
             padding-top: 1.5rem;
         }
+
         .btn-print-selected {
-            background-color: #315e48;
+            background-color: #2563eb;
             color: #ffffff;
         }
         .btn-print-selected:hover { background-color: #1d4ed8; }
@@ -363,9 +352,8 @@
             background-color: #982929;
             border-color: #d1d5db;
             color: #dfe3ec;
-
         }
-        .btn-secondary:hover { background-color: #f9fafb; }
+        .btn-secondary:hover { background-color: #f9fafb; color: #1f2937; border-color: #cbd5e1; }
 
         .pagination-nav {
             display: flex;
@@ -373,7 +361,7 @@
             align-items: center;
         }
 
-        /* --- MODAL STYLES FOR MASSIVE COURSE LISTS --- */
+        /* Modal Overlay Interfaces */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -389,10 +377,12 @@
             pointer-events: none;
             transition: opacity 0.2s ease;
         }
+
         .modal-overlay.active {
             opacity: 1;
             pointer-events: auto;
         }
+
         .modal-container {
             background: #ffffff;
             width: 90%;
@@ -403,6 +393,7 @@
             flex-direction: column;
             max-height: 80vh;
         }
+
         .modal-header {
             padding: 1rem;
             border-bottom: 1px solid #e5e7eb;
@@ -410,10 +401,12 @@
             justify-content: space-between;
             align-items: center;
         }
+
         .modal-header h3 {
             font-size: 1.1rem;
             font-weight: 600;
         }
+
         .modal-close-btn {
             background: none;
             border: none;
@@ -421,10 +414,12 @@
             cursor: pointer;
             color: #9ca3af;
         }
+
         .modal-search-box {
             padding: 0.75rem 1rem;
             border-bottom: 1px solid #e5e7eb;
         }
+
         .modal-search-box input {
             width: 100%;
             height: 38px;
@@ -434,14 +429,17 @@
             font-size: 0.875rem;
             outline: none;
         }
+
         .modal-search-box input:focus {
             border-color: #2563eb;
         }
+
         .modal-list {
             overflow-y: auto;
             flex: 1;
             padding: 0.5rem;
         }
+
         .modal-item {
             display: block;
             width: 100%;
@@ -454,13 +452,49 @@
             cursor: pointer;
             color: #374151;
         }
+
         .modal-item:hover {
             background-color: #f3f4f6;
         }
+
         .modal-item.active-selection {
             background-color: #eff6ff;
             color: #1d4ed8;
             font-weight: 600;
+        }
+
+        /* Print Override Configs */
+        @media print {
+            body, html {
+                background: none !important;
+                color: #000000 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .top-navbar, .filter-form, .footer-controls, .pagination-nav, .modal-overlay, th:last-child, td:last-child {
+                display: none !important;
+            }
+            .container {
+                max-width: 100% !important;
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                background: transparent !important;
+            }
+            .student-card-layout {
+                height: auto !important;
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+                page-break-after: always !important;
+                break-after: page !important;
+                padding: 30px !important;
+                box-sizing: border-box !important;
+            }
+            .student-card-layout:last-child {
+                page-break-after: auto !important;
+                break-after: auto !important;
+            }
         }
     </style>
 </head>
@@ -473,7 +507,6 @@
 </div>
 
 <div class="container">
-
     <h2 class="page-title">View Students</h2>
 
     <form action="/filter" method="post" autocomplete="off" class="filter-form">
@@ -500,34 +533,35 @@
 
         <div class="filter-actions">
             <button type="submit" class="btn btn-search">SEARCH</button>
+            <button type="button" class="btn btn-clears" id="btnColumns">⚙ Columns</button>
+            <button type="button" class="btn btn-clear" id="btnClearFilters">CLEAR FILTER</button>
 
-            <button type="button" class="btn btn-clear" id="btnColumns">⚙ Columns</button>
             <div class="col-dropdown-menu" id="columnsDropdown">
                 <label class="col-dropdown-item"><input type="checkbox" data-column="1" checked> ID</label>
                 <label class="col-dropdown-item"><input type="checkbox" data-column="2" checked> Name</label>
-                <label class="col-dropdown-item"><input type="checkbox" data-column="3" checked> Gender</label>
-                <label class="col-dropdown-item"><input type="checkbox" data-column="4" checked> DOB</label>
-                <label class="col-dropdown-item"><input type="checkbox" data-column="5" checked> Age</label>
-                <label class="col-dropdown-item"><input type="checkbox" data-column="6" checked> Father Name</label>
-                <label class="col-dropdown-item"><input type="checkbox" data-column="7" checked> Mother Name</label>
-                <label class="col-dropdown-item"><input type="checkbox" data-column="8" checked> Address</label>
-                <label class="col-dropdown-item"><input type="checkbox" data-column="9" checked> City</label>
-                <label class="col-dropdown-item"><input type="checkbox" data-column="10" checked> State</label>
-                <label class="col-dropdown-item"><input type="checkbox" data-column="11" checked> Mobile</label>
-                <label class="col-dropdown-item"><input type="checkbox" data-column="12" checked> Email</label>
+                <label class="col-dropdown-item"><input type="checkbox" data-column="3"> Gender</label>
+                <label class="col-dropdown-item"><input type="checkbox" data-column="4"> DOB</label>
+                <label class="col-dropdown-item"><input type="checkbox" data-column="5"> Age</label>
+                <label class="col-dropdown-item"><input type="checkbox" data-column="6"> Father Name</label>
+                <label class="col-dropdown-item"><input type="checkbox" data-column="7"> Mother Name</label>
+                <label class="col-dropdown-item"><input type="checkbox" data-column="8"> Address</label>
+                <label class="col-dropdown-item"><input type="checkbox" data-column="9"> City</label>
+                <label class="col-dropdown-item"><input type="checkbox" data-column="10"> State</label>
+                <label class="col-dropdown-item"><input type="checkbox" data-column="11"> Mobile</label>
+                <label class="col-dropdown-item"><input type="checkbox" data-column="12"> Email</label>
                 <label class="col-dropdown-item"><input type="checkbox" data-column="13" checked> Course</label>
                 <label class="col-dropdown-item"><input type="checkbox" data-column="14" checked> Admission Date</label>
             </div>
         </div>
     </form>
 
-    <form action="/print_students" method="post" target="_blank" id="printForm">
-
+    <form action="/print_students" method="post" target="PrintWindow" id="printForm">
         <div class="table-container">
             <table class="table" id="studentTable">
                 <thead>
                     <tr>
                         <th style="width: 40px; text-align: center;"><input type="checkbox" id="selectAll"></th>
+                        <th style="text-align: center;">Action</th>
                         <th>ID</th>
                         <th>Name</th>
                         <th>Gender</th>
@@ -542,13 +576,21 @@
                         <th>Email</th>
                         <th>Course</th>
                         <th>Admission Date</th>
-                        <th style="text-align: center;">Action</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     {% for s in students %}
                     <tr>
                         <td style="text-align: center;"><input type="checkbox" name="student_ids" value="{{ s.StudentID }}"></td>
+                        <td>
+                            <div class="action-cell">
+                                <a href="{{ url_for('edit_student', student_id=s.StudentID) }}">
+                                    <button type="button" class="btn btn-action btn-edit">Edit</button>
+                                </a>
+                                <button type="button" class="btn btn-action btn-print-row" onclick="printSingle('{{ url_for('print_student', student_id=s.StudentID) }}')">Print</button>
+                            </div>
+                        </td>
                         <td style="font-weight: 600; color: #111827;">{{ s.StudentID }}</td>
                         <td style="font-weight: 500; color: #111827;">{{ s.Name }}</td>
                         <td>{{ s.Genderr }}</td>
@@ -561,18 +603,21 @@
                         <td>{{ s.State }}</td>
                         <td>{{ s.Mobile }}</td>
                         <td>{{ s.Email }}</td>
-                        <td><span class="course-badge">{{ s.Course }}</span></td>
+                        <td>{{ s.Course }}</td>
                         <td>{{ s.AdmissionDate }}</td>
-                        <td>
-                            <div class="action-cell">
-                                <a href="{{ url_for('edit_student', student_id=s.StudentID) }}">
-                                    <button type="button" class="btn btn-action btn-edit">Edit</button>
-                                </a>
-                                <a href="{{ url_for('print_student', student_id=s.StudentID) }}" target="_blank">
-                                    <button type="button" class="btn btn-action btn-print-row">Print</button>
-                                </a>
-                            </div>
-                        </td>
+<!--                        <td>-->
+<!--                            <div class="action-cell">-->
+<!--                                <a href="{{ url_for('edit_student', student_id=s.StudentID) }}">-->
+<!--                                    <button type="button" class="btn btn-action btn-edit">Edit</button>-->
+<!--                                </a>-->
+<!--                                <button-->
+<!--                                      type="button"-->
+<!--                                       class="btn btn-action btn-print-row"-->
+<!--                                       onclick="printSingle('{{ url_for('print_student', student_id=s.StudentID) }}')">-->
+<!--                                    Print</button>-->
+
+<!--                            </div>-->
+<!--                        </td>-->
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -586,38 +631,40 @@
             </div>
 
             <div class="bottom-actions-bar">
-                <button type="submit" class="btn btn-print-selected">
-                    PRINT SELECTED
-                </button>
-    </form>
+                <button type="submit" class="btn btn-print-selected">PRINT SELECTED</button>
+
                 <div class="pagination-nav">
                     {% if page > 1 %}
-                    <form action="/filter" method="post" style="display:inline;">
-                        <input type="hidden" name="fromdate" value="{{ fromdate }}">
-                        <input type="hidden" name="todate" value="{{ todate }}">
-                        <input type="hidden" name="course" value="{{ course }}">
-                        <input type="hidden" name="page" value="{{ page-1 }}">
-                        <button class="btn btn-secondary">← PREVIOUS</button>
-                    </form>
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('prevPageForm').submit();" class="btn btn-secondary">← PREVIOUS</a>
                     {% endif %}
 
                     {% if page < total_pages %}
-                    <form action="/filter" method="post" style="display:inline;">
-                        <input type="hidden" name="fromdate" value="{{ fromdate }}">
-                        <input type="hidden" name="todate" value="{{ todate }}">
-                        <input type="hidden" name="course" value="{{ course }}">
-                        <input type="hidden" name="page" value="{{ page+1 }}">
-                        <button class="btn btn-secondary">NEXT →</button>
-                    </form>
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('nextPageForm').submit();" class="btn btn-secondary">NEXT →</a>
                     {% endif %}
 
-                    <a href="/" style="margin-left: 0.5rem;">
-                        <button type="button" class="btn btn-secondary">← BACK</button>
-                    </a>
+                    <a href="/" class="btn btn-secondary">← BACK</a>
                 </div>
             </div>
         </div>
+    </form>
 
+    {% if page > 1 %}
+    <form id="prevPageForm" action="/filter" method="post" style="display:none;">
+        <input type="hidden" name="fromdate" value="{{ fromdate }}">
+        <input type="hidden" name="todate" value="{{ todate }}">
+        <input type="hidden" name="course" value="{{ course }}">
+        <input type="hidden" name="page" value="{{ page-1 }}">
+    </form>
+    {% endif %}
+
+    {% if page < total_pages %}
+    <form id="nextPageForm" action="/filter" method="post" style="display:none;">
+        <input type="hidden" name="fromdate" value="{{ fromdate }}">
+        <input type="hidden" name="todate" value="{{ todate }}">
+        <input type="hidden" name="course" value="{{ course }}">
+        <input type="hidden" name="page" value="{{ page+1 }}">
+    </form>
+    {% endif %}
 </div>
 
 <div class="modal-overlay" id="courseModalOverlay">
@@ -639,111 +686,156 @@
 </div>
 
 <script>
-// Select All Handling Logic
-document.getElementById('selectAll').addEventListener('change', function () {
-    document.querySelectorAll('input[name="student_ids"]').forEach(function (cb) {
-        cb.checked = document.getElementById('selectAll').checked;
-    });
-});
-
-// Column Show/Hide Dropdown Logic
-const btnColumns = document.getElementById('btnColumns');
-const columnsDropdown = document.getElementById('columnsDropdown');
-
-btnColumns.addEventListener('click', function(e) {
-    e.stopPropagation();
-    columnsDropdown.classList.toggle('show');
-});
-
-// Prevent dropdown from closing when clicking inside it
-columnsDropdown.addEventListener('click', function(e) {
-    e.stopPropagation();
-});
-
-// Close dropdown if clicked outside anywhere
-document.addEventListener('click', function() {
-    columnsDropdown.classList.remove('show');
-});
-
-// Toggle Columns Execution Routine
-const checkBoxes = columnsDropdown.querySelectorAll('input[type="checkbox"]');
-checkBoxes.forEach(function(box) {
-    box.addEventListener('change', function() {
-        const columnIndex = parseInt(this.getAttribute('data-column'));
-        const displayStyle = this.checked ? '' : 'none';
-
-        const tableRows = document.querySelectorAll('#studentTable tr');
-        tableRows.forEach(function(row) {
-            if(row.children[columnIndex]) {
-                row.children[columnIndex].style.display = displayStyle;
-            }
-        });
-    });
-});
-
-// Modal Logic Handling Elements
-const triggerBtn = document.getElementById('courseTriggerBtn');
-const overlay = document.getElementById('courseModalOverlay');
-const closeBtn = document.getElementById('closeModalBtn');
-const searchInput = document.getElementById('courseSearchInput');
-const itemsWrapper = document.getElementById('modalItemsWrapper');
-const hiddenInput = document.getElementById('selectedCourseInput');
-const displayLabel = document.getElementById('selectedCourseLabel');
-const courseItems = document.querySelectorAll('.modal-item');
-
-// Open Modal Window
-triggerBtn.addEventListener('click', function() {
-    overlay.classList.add('active');
-    searchInput.value = ''; // Reset input text context
-    filterList(''); // Show all items initially
-    searchInput.focus();
-});
-
-// Close Modal Window
-function hideModal() {
-    overlay.classList.remove('active');
+// Toggle Columns Visibility function helper
+function printSingle(url) {
+    window.location.href = url;
 }
-closeBtn.addEventListener('click', hideModal);
-overlay.addEventListener('click', function(e) {
-    if (e.target === overlay) hideModal();
-});
-
-// Filter items on type context input
-searchInput.addEventListener('input', function(e) {
-    filterList(e.target.value.toLowerCase());
-});
-
-function filterList(keyword) {
-    courseItems.forEach(function(item) {
-        const itemText = item.textContent.toLowerCase();
-        if (itemText.includes(keyword)) {
-            item.style.display = "block";
-        } else {
-            item.style.display = "none";
+// function printSingle(url) {
+//     var w = window.open(
+//         '',
+//         'PrintWindow',
+//         'width=900,height=700,scrollbars=yes,resizable=yes'
+//     );
+//
+//     w.location.href = url;
+// }
+function updateColumnVisibility(box) {
+    const columnIndex = parseInt(box.getAttribute('data-column'));
+    const displayStyle = box.checked ? '' : 'none';
+    const tableRows = document.querySelectorAll('#studentTable tr');
+    tableRows.forEach(function(row) {
+        if(row.children[columnIndex]) {
+            row.children[columnIndex].style.display = displayStyle;
         }
     });
 }
 
-// Select Item Selection Routing Routine
-courseItems.forEach(function(item) {
-    item.addEventListener('click', function() {
-        // Clear active styles everywhere and update selection state highlights
-        courseItems.forEach(el => el.classList.remove('active-selection'));
-        item.classList.add('active-selection');
+document.addEventListener('DOMContentLoaded', function() {
+    // Select All Handling Logic
+    const selectAll = document.getElementById('selectAll');
+    if (selectAll) {
+        selectAll.addEventListener('change', function () {
+            document.querySelectorAll('input[name="student_ids"]').forEach(function (cb) {
+                cb.checked = selectAll.checked;
+            });
+        });
+//         const printForm = document.getElementById('printForm');
+// if (printForm) {
+//     printForm.addEventListener('submit', function() {
+//         window.open('', 'PrintWindow', 'width=900,height=700,top=100,left=100,menubar=no,toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes');
+//         this.target = 'PrintWindow';
+//     });
+// }
+        const printForm = document.getElementById('printForm');
+if (printForm) {
+    printForm.removeAttribute('target');
+}
+    }
 
-        const val = item.getAttribute('data-value');
-        hiddenInput.value = val;
-        displayLabel.textContent = val ? val : "All Courses";
+    // Column Show/Hide Dropdown Logic
+    const btnColumns = document.getElementById('btnColumns');
+    const columnsDropdown = document.getElementById('columnsDropdown');
 
-        hideModal();
+    if (btnColumns && columnsDropdown) {
+        btnColumns.addEventListener('click', function(e) {
+            e.stopPropagation();
+            columnsDropdown.classList.toggle('show');
+        });
+
+        columnsDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        document.addEventListener('click', function() {
+            columnsDropdown.classList.remove('show');
+        });
+
+        const checkBoxes = columnsDropdown.querySelectorAll('input[type="checkbox"]');
+        checkBoxes.forEach(function(box) {
+            // Apply layout visibility instantly based on initial properties state
+            updateColumnVisibility(box);
+            // Listen to mutations manually
+            box.addEventListener('change', function() {
+                updateColumnVisibility(this);
+            });
+        });
+    }
+
+    // Modal Logic Setup Elements
+    const triggerBtn = document.getElementById('courseTriggerBtn');
+    const overlay = document.getElementById('courseModalOverlay');
+    const closeBtn = document.getElementById('closeModalBtn');
+    const searchInput = document.getElementById('courseSearchInput');
+    const hiddenInput = document.getElementById('selectedCourseInput');
+    const displayLabel = document.getElementById('selectedCourseLabel');
+    const courseItems = document.querySelectorAll('.modal-item');
+
+    function hideModal() {
+        if (overlay) overlay.classList.remove('active');
+    }
+
+    function filterList(keyword) {
+        courseItems.forEach(function(item) {
+            const itemText = item.textContent.toLowerCase();
+            item.style.display = itemText.includes(keyword) ? "block" : "none";
+        });
+    }
+
+    if (triggerBtn && overlay) {
+        triggerBtn.addEventListener('click', function() {
+            overlay.classList.add('active');
+            if (searchInput) {
+                searchInput.value = '';
+                searchInput.focus();
+            }
+            filterList('');
+        });
+
+        if (closeBtn) closeBtn.addEventListener('click', hideModal);
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) hideModal();
+        });
+    }
+
+    if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+            filterList(e.target.value.toLowerCase());
+        });
+    }
+
+    courseItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            courseItems.forEach(el => el.classList.remove('active-selection'));
+            item.classList.add('active-selection');
+
+            const val = item.getAttribute('data-value');
+            if (hiddenInput) hiddenInput.value = val;
+            if (displayLabel) displayLabel.textContent = val ? val : "All Courses";
+
+            hideModal();
+        });
     });
+
+    // Clear Filters Layout Operations Logic Routine
+    const btnClearFilters = document.getElementById('btnClearFilters');
+    if (btnClearFilters) {
+        btnClearFilters.addEventListener('click', function() {
+            const filterForm = this.closest('form');
+            if (filterForm) {
+                filterForm.querySelectorAll('input[type="date"]').forEach(input => input.value = '');
+                if (hiddenInput) hiddenInput.value = '';
+                if (displayLabel) displayLabel.textContent = 'All Courses';
+
+                document.querySelectorAll('.modal-item').forEach(el => el.classList.remove('active-selection'));
+                const allCoursesBtn = document.querySelector('.modal-item[data-value=""]');
+                if (allCoursesBtn) allCoursesBtn.classList.add('active-selection');
+
+                filterForm.submit();
+            }
+        });
+    }
 });
 </script>
-
 </body>
 </html>
-
-
-
-
 
